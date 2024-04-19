@@ -36,11 +36,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 # Productions
 # DEBUG = True
-# ALLOWED_HOSTS = ['.anchor.usdc.online', 'usdc.onrender.com']
+# ALLOWED_HOSTS = ['']
 
 # (In development they should be true)
 DEBUG = True
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
@@ -74,7 +74,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 CORS_ALLOW_ALL_ORIGINS  = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ('https://usdc.online',)
+CORS_ORIGIN_WHITELIST = ('')
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = [
@@ -101,7 +101,7 @@ CORS_ALLOW_HEADERS = [
 # SECURE_SSL_REDIRECT = True
 
 # SESSION_COOKIE_AGE = 3000
-SESSION_COOKIE_DOMAIN = '.usdc.online'
+SESSION_COOKIE_DOMAIN = 'localhost:8000'
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
