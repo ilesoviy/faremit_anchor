@@ -1,8 +1,9 @@
-NETWORK_PASSPHRASE="Public Global Stellar Network ; April 2024"
+# NETWORK_PASSPHRASE="Public Global Stellar Network ; April 2024"
+NETWORK_PASSPHRASE = "Test SDF Network ; April 2024"
 ACCOUNTS=["GDDWFPST4EELD5VYKJ3E7VM7U6CNHUV7JXW6I74YJY5LWMYJKPVXER4O","GBGIQCRTAG3JT6PAB26725FVRLGD2NX2J7PIOUKKVA5BTMDKD3GSCRIO"]
 SIGNING_KEY="GDDWFPST4EELD5VYKJ3E7VM7U6CNHUV7JXW6I74YJY5LWMYJKPVXER4O"
-WEB_AUTH_ENDPOINT=""
-TRANSFER_SERVER_SEP0024=""
+TRANSFER_SERVER_SEP0024 = "https://cryptoprince0207.online/sep24"
+WEB_AUTH_ENDPOINT = "https://cryptoprince0207.online/auth"
 
 [DOCUMENTATION]
 ORG_NAME=""
@@ -19,6 +20,20 @@ ORG_SUPPORT_EMAIL=""
 [[PRINCIPALS]]
 name=""
 email=""
+
+[[CURRENCIES]]
+code="TEST"
+issuer="GBGIQCRTAG3JT6PAB26725FVRLGD2NX2J7PIOUKKVA5BTMDKD3GSCRIO"
+name="TEST"
+desc="Test currency"
+display_decimals=2
+is_asset_anchored=true
+is_unlimited=true
+anchor_asset_type="fiat"
+anchor_asset="TEST"
+redemption_instructions="Access through trusted partners and stellar wallets"
+status="live"
+image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Wd0DLe0ioB0c2pIJXg0IB9l9J2cXtsrQ6dlqshJCww&s"
 
 [[CURRENCIES]]
 code="USD"

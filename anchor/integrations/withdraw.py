@@ -88,7 +88,7 @@ class AnchorWithdraw(WithdrawalIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        ownUrl = "http://localhost:3000/stellar/withdraw"
+        ownUrl = "https://faremit-frontend.vercel.app/stellar/withdraw"
         
          # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()
@@ -112,7 +112,6 @@ class AnchorWithdraw(WithdrawalIntegration):
         transaction: Transaction
     ):
         transaction.status = Transaction.STATUS.pending_user_transfer_start
-        # transaction.status = Transaction.STATUS.pending_external # [DAVID]
         transaction.amount_in = Decimal(request.query_params.get("amount"))
         transaction.amount_fee = Decimal(request.query_params.get("amount_fee"))
         transaction.amount_out = transaction.amount_in - transaction.amount_fee
@@ -121,5 +120,5 @@ class AnchorWithdraw(WithdrawalIntegration):
         transaction.to_address = (request.query_params.get("account"))
         transaction.external_transaction_id = (request.query_params.get("externalId"))
         transaction.on_change_callback = (request.query_params.get("callback"))
-        transaction.receiving_anchor_account = "GASBV6W7GGED66MXEVC7YZHTWWYMSVYEY35USF2HJZBLABLYIFQGXZY6"
+        transaction.receiving_anchor_account = "GDDWFPST4EELD5VYKJ3E7VM7U6CNHUV7JXW6I74YJY5LWMYJKPVXER4O"
         transaction.save()

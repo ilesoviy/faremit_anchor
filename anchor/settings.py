@@ -27,12 +27,15 @@ PROJECT_ROOT = os.path.dirname(BASE_DIR)
 SECRET_KEY = "django-insecure-=tys+ahxg_x7)g89=bdk58vmt7bbagf&s@x2#&7*fi0c0&ywf3"
 
 # Productions
-# DEBUG = True
+DEBUG = True
 # ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['www.cryptoprince0207.online', 'cryptoprince0207.online', 'faremit-frontend.vercel.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app', 'https://*.cryptoprince0207.online']
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # (In development they should be true)
-DEBUG = True
-ALLOWED_HOSTS = []
+# DEBUG = True
 
 # Application definition
 
@@ -91,7 +94,6 @@ CORS_ALLOW_HEADERS = [
 'x-requested-with',
 ]
 
-# SECURE_SSL_REDIRECT = True
 
 # SESSION_COOKIE_AGE = 3000
 # SESSION_COOKIE_DOMAIN = 'http://localhost:8000'

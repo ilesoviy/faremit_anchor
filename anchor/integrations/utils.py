@@ -1,11 +1,12 @@
 from .models import ElinkPayment
+from decimal import Decimal
 
 def calculate_fee(transaction):
     # not in use presently
     # print(f'FEE:{transaction.amount_in}')
     # fee = (transaction.amount_in) * decimal.Decimal(10/100)
 
-    return 3.45
+    return  Decimal(3.45) 
 
 def is_valid_payment_amount(amount_in):
     #for test just check if amount_in is at least $50

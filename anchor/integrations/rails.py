@@ -48,15 +48,16 @@ class AnchorRails(RailsIntegration):
                 transaction.asset.significant_decimals
             )
             transaction.save()
-        payment = submit_payment(transaction)
-        if payment.status == 'DELIVERED':
-            transaction.status = Transaction.STATUS.completed
-        elif payment.status == 'INITIATED':
-            transaction.status = Transaction.STATUS.pending_external
-        else:  # payment.status == 'FAILED':
-            transaction.status = Transaction.STATUS.error
-            transaction.status_message = "payment failed, contact customer support."
-        transaction.external_transaction_id = payment.id
+        # payment = submit_payment(transaction) [DAVID]
+        # if payment.status == 'DELIVERED':
+        #     transaction.status = Transaction.STATUS.completed
+        # elif payment.status == 'INITIATED':
+        #     transaction.status = Transaction.STATUS.pending_external
+        # else:  # payment.status == 'FAILED':
+        #     transaction.status = Transaction.STATUS.error
+        #     transaction.status_message = "payment failed, contact customer support."
+        # transaction.external_transaction_id = payment.id
+        transaction.status = Transaction.STATUS.completed
         transaction.save()
 
     def poll_outgoing_transactions(
