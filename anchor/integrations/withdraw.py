@@ -88,8 +88,7 @@ class AnchorWithdraw(WithdrawalIntegration):
         if request.query_params.get("step"):
           raise NotImplementedError()
 
-        # ownUrl = "http://localhost:3000/stellar/withdraw"
-        ownUrl = "http://localhost:8000/sep24/transactions/withdraw/webapp"
+        ownUrl = "http://localhost:3000/stellar/withdraw"
         
          # Full interactive url /sep24/transactions/deposit/webapp
         url = request.build_absolute_uri()
@@ -102,7 +101,7 @@ class AnchorWithdraw(WithdrawalIntegration):
 
         ownUrl += "?" if parsed_url.query else "&"
 
-        # payload = {'type': 'withdraw', 'asset_code': asset.code, 'transaction_id':transaction.id, 'token': token, 'callback': callback, 'wallet': transaction.stellar_account}
+        payload = {'type': 'withdraw', 'asset_code': asset.code, 'transaction_id':transaction.id, 'token': token, 'callback': callback, 'wallet': transaction.stellar_account}
         result = urlencode(payload, quote_via=quote_plus)
         # The anchor uses a standalone interactive flow
         return (ownUrl + result)
@@ -113,6 +112,7 @@ class AnchorWithdraw(WithdrawalIntegration):
         transaction: Transaction
     ):
         transaction.status = Transaction.STATUS.pending_user_transfer_start
+        # transaction.status = Transaction.STATUS.pending_external # [DAVID]
         transaction.amount_in = Decimal(request.query_params.get("amount"))
         transaction.amount_fee = Decimal(request.query_params.get("amount_fee"))
         transaction.amount_out = transaction.amount_in - transaction.amount_fee

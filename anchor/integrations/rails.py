@@ -18,6 +18,7 @@ class AnchorRails(RailsIntegration):
         *args: List,
         **kwargs: Dict
     ):
+        print(f"[DAVID] poll_pending_deposits :: pending_deposits = {pending_deposits}")
         # received_payments = []
         # for transaction in pending_deposits:
         #     if has_received_payment(get_reference_id(transaction)):
@@ -32,6 +33,7 @@ class AnchorRails(RailsIntegration):
         *args: List,
         **kwargs: Dict
     ):
+        print(f"[DAVID] ::: execute_outgoing_transaction ::: transaction = {transaction}")
         if transaction.amount_in != transaction.amount_expected:
             if not is_valid_payment_amount(transaction.amount_in):
                 initiate_refund(transaction)
@@ -63,15 +65,16 @@ class AnchorRails(RailsIntegration):
         *args: List,
         **kwargs: Dict
     ) -> List[Transaction]:
+        print(f"[DAVID] ::: poll_outgoing_transactions ::: transactions = {transactions}")
         delivered_transactions = []
         for transaction in transactions:
-            payment = get_payment(transaction)
-            if payment.status == 'INITIATED':
-                continue
-            if payment.status == 'FAILED':
-                transaction.status = Transaction.STATUS.error
-                transaction.status_message = "payment failed, contact customer support."
-                transaction.save()
-                continue
+            # payment = get_payment(transaction)
+            # if payment.status == 'INITIATED':
+            #     continue
+            # if payment.status == 'FAILED':
+            #     transaction.status = Transaction.STATUS.error
+            #     transaction.status_message = "payment failed, contact customer support."
+            #     transaction.save()
+            #     continue
             delivered_transactions.append(transaction)
         return delivered_transactions
